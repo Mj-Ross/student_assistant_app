@@ -5,6 +5,7 @@ enum ApplicationStatus {
   pending,
   approved,
   rejected,
+  waitingList,
 }
 
 extension ApplicationStatusExt on ApplicationStatus {
@@ -16,6 +17,8 @@ extension ApplicationStatusExt on ApplicationStatus {
         return 'approved';
       case ApplicationStatus.rejected:
         return 'rejected';
+      case ApplicationStatus.waitingList:
+        return 'waiting list'
     }
   }
 
@@ -23,6 +26,8 @@ extension ApplicationStatusExt on ApplicationStatus {
     switch (status.toLowerCase()) {
       case 'approved':
         return ApplicationStatus.approved;
+      case 'waiting list'
+        return ApplicationStatus.waitingList;
       case 'rejected':
         return ApplicationStatus.rejected;
       default:
@@ -36,6 +41,8 @@ extension ApplicationStatusExt on ApplicationStatus {
         return 'Pending';
       case ApplicationStatus.approved:
         return 'Approved';
+      case ApplicationStatus.waitingList:
+        return 'Waiting List';
       case ApplicationStatus.rejected:
         return 'Rejected';
     }
@@ -47,6 +54,8 @@ extension ApplicationStatusExt on ApplicationStatus {
         return Colors.orange;
       case ApplicationStatus.approved:
         return Colors.green;
+      case ApplicationStatus.waitingList:
+        return Colors.purple;
       case ApplicationStatus.rejected:
         return Colors.red;
     }
