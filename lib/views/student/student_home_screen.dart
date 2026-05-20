@@ -1,6 +1,12 @@
 // GROUP MEMBERS: [TH MOSIA 222040802, MC MOGOTSI 221023182, TL MOLOI 222004939, SM NKOSI 222020350, K LETELE 223053487]
 
-
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../providers/auth_provider.dart';
+import '../../providers/application_provider.dart';
+import '../../models/application.dart';
 import '../../services/supabase_service.dart';
 import '../../shared/constants/app_colors.dart';
 import '../../shared/constants/app_strings.dart';
