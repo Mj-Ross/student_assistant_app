@@ -114,38 +114,3 @@ class StudentApplication {
     if (json['selected_modules'] != null) {
       modules = (json['selected_modules'] as List).map((m) => 
         ModuleSelection.fromJson(m)
-      ).toList();
-    }
-    
-    return StudentApplication(
-      id: json['id'],
-      userId: json['user_id'],
-      yearOfStudy: json['year_of_study'],
-      selectedModules: modules,
-      status: ApplicationStatusExt.fromString(json['status'] ?? 'pending'),
-      adminComment: json['admin_comment'],
-      submittedAt: DateTime.parse(json['submitted_at']),
-      updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
-      supportingDocuments: List<String>.from(json['supporting_documents'] ?? []),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'user_id': userId,
-      'year_of_study': yearOfStudy,
-      'selected_modules': selectedModules.map((m) => m.toJson()).toList(),
-      'status': status.value,
-      'admin_comment': adminComment,
-      'submitted_at': submittedAt.toIso8601String(),
-      'updated_at': updatedAt?.toIso8601String(),
-      'supporting_documents': supportingDocuments,
-    };
-  }
-
-  bool get isPending => status == ApplicationStatus.pending;
-  bool get isApproved => status == ApplicationStatus.approved;
-  bool get isRejected => status == ApplicationStatus.rejected;
-  bool get canBeEdited => isPending;
-}
